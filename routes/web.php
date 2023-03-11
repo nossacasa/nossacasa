@@ -1,5 +1,10 @@
 <?php
 
+use App\Http\Controllers\{
+    CadastroController,
+    SiteController
+};
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +18,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+Route::get('/site', [SiteController::class, 'index'])->name('site.index');
+Route::get('/site/{id}', [SiteController::class, 'show'])->name('site.show');
+
+
+Route::get('/cadastro', [CadastroController::class, 'index'])->name('cadastro.index');
+Route::post('/cadastro/{cdconsulente}', [CadastroController::class, 'postData'])->name('cadastro.postData');
+
+
+
+
