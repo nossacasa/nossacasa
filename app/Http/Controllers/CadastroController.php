@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\tb_consulente;
 use Illuminate\Http\Request;
 
 class CadastroController extends Controller
@@ -11,9 +12,28 @@ class CadastroController extends Controller
         return view('cadastro.index');
     }
 
-    public function postData(Request $request)//o $request eh simplesmente um nome
+    public function store(Request $request)//o $request eh simplesmente um nome
     {
-        var_dump($request);
-        return "entrei em acao post";
+
+        dd($request);
+        // $insert = [
+        // 'nome' => trim($request->nome),
+        // 'dtnascimento' => $request->dtnascimento,
+        // 'telefone' => $request->phone,
+        // 'cep' => $request->cep,
+        // 'nmlogradouro' => trim($request->rua),
+        // 'nrlogradouro' => trim($request->numero),
+        // 'complemento' => trim($request->complemento),
+        // 'bairro' => trim($request->bairro),
+        // 'cidade' => trim($request->cidade),
+        // 'uf' => trim($request->uf),
+        // 'email' => trim($request->email),
+        // 'inddoencacronica' => trim($request->inddoencacronica),
+        // 'descdoenca' => trim($request->descdoenca),
+        // 'dtcadastro' => time(),
+        // 'usuarioinclusao'  => null
+        // ];
+        // tb_consulente::create($insert);
+
     }
 }

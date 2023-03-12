@@ -71,77 +71,76 @@
     </script>
 
 @section('content')
+
     <div class="container my-5">
 
-        <form action="{{ url('/cadastro/1') }}" method="POST" autocomplete="off">
-
-            @method('delete')
+        <form action="{{ route('cadastro.store') }}" method="post" autocomplete="off">
             @csrf
-
             <div class="form-group">
                 <label for="nome">Nome Completo</label>
-                <input type="text" name="nome" id="nome" class="form-control">
+                <input type="text" name="nome" id="nome" class="form-control" required>
             </div>
 
-            <div class="label_g2">
                 <label class="label">
                     <span class="dtnascimento">Data de Nascimento:</span>
-                    <input type="date" name="dtnascimento" id="dtnascimento" class="mask-date" value=""/>
+                    <input type="date" name="dtnascimento" id="dtnascimento" class="mask-date" value="" required>
                 </label>
-                <label class="label">
+                {{--  <label class="label">
                     <span class="telefone">Telefone:</span>
-                    <input type="tel" class="telefone" name="telefone" id="telefone"
-                        placeholder="Telefone" value=""/>
-                </label>
-            </div>
+                    <input type="" id="telefone" name="telefone"
+                        value="" required>
+                </label>  --}}
+                <label for="phone">Telefone:</label>
+                <input type="tel" id="telefone" name="phone" required>
+
 
                 <label class="label">
                     <span class="email">E-mail:</span>
-                    <input type="email" name="email" id="email" class="mask-date" value=""/>
-                </label>
+                    <input type="email" name="email" id="email" class="mask-date" value="">
+                </label> <br>
 
 
                 <label class="label">
                     <span class="inddoencacronica">Doença Cronica:</span>
-                    <input type="checkbox" class="inddoencacronica" name="inddoencacronica" id="inddoencacronica"
-                        value=""/>
+                    <input type="checkbox" id="inddoencacronica" value="1">
                 </label>
 
                 <label class="label">
                     <span class="descdoenca">Descrição:</span>
-                    <input type="text" class="descdoenca" name="descdoenca" id="descdoenca" size="80"
-                        value=""/>
+                    <input type="text" id="descdoenca" size="80" value="">
                 </label><br>
 
                     <label>Cep:
                         <input name="cep" type="text" id="cep" value="" size="10" maxlength="9"
-                           onblur="pesquisacep(this.value);" />
+                           onblur="pesquisacep(this.value);" required>
                     </label><br />
 
                     <label>Rua:
-                        <input name="rua" type="text" id="rua" size="80"/>
+                        <input name="rua" type="text" id="rua" size="80">
                     </label><br />
+
                     <div class="label_g2">
                         <label>Numero:
-                            <input name="numero" type="text" id="numero"/>
+                            <input name="numero" type="text" id="numero">
                         </label>
 
                         <label>Complemento:
-                            <input name="complemento" type="text" id="complemento"/>
+                            <input name="complemento" type="text" id="complemento">
                         </label><br />
                     </div>
                     <div class="label_g2">
                         <label>Bairro:
-                            <input name="bairro" type="text" id="bairro" />
+                            <input name="bairro" type="text" id="bairro" >
                         </label>
                         <label>Cidade:
-                            <input name="cidade" type="text" id="cidade" />
+                            <input name="cidade" type="text" id="cidade" >
                         </label><br/>
                     </div>
 
                     <label>Estado:
-                        <input name="uf" type="text" id="uf" size="2" />
+                        <input name="uf" type="text" id="uf" size="2" >
                     </label><br />
+
 
 
             <button class="btn btn-primary">Enviar</button>

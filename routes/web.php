@@ -26,8 +26,9 @@ Route::get('/site/{id}', [SiteController::class, 'show'])->name('site.show');
 
 
 Route::get('/cadastro', [CadastroController::class, 'index'])->name('cadastro.index');
-Route::post('/cadastro/{cdconsulente}', [CadastroController::class, 'postData'])->name('cadastro.postData');
+Route::post('/cadastro/store', [CadastroController::class, 'store'])->name('cadastro.store');
 
 
+//Route::resource()
 
 
