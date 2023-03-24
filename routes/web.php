@@ -1,11 +1,9 @@
 <?php
 
-use App\Http\Controllers\{
-    CadastroController,
-    SiteController
-};
-
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\SiteController;
+use App\Http\Controllers\CadastroController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,17 +16,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
+
 Route::get('/site', [SiteController::class, 'index'])->name('site.index');
 Route::get('/site/{id}', [SiteController::class, 'show'])->name('site.show');
 
 
-Route::get('/cadastro', [CadastroController::class, 'index'])->name('cadastro.index');
-Route::post('/cadastro/store', [CadastroController::class, 'store'])->name('cadastro.store');
+Route::get('/cadastro', [CadastroController::class, 'index'])->middleware(['auth'])->name('cadastro.index');
+Route::post('/cadastro/store', [CadastroController::class, 'store'])->middleware(['auth'])->name('cadastro.store');
 
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
 
-//Route::resource()
+require __DIR__.'/auth.php';
 
+Auth::routes();
 
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
