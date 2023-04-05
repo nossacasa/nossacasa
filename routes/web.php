@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\SiteController;
 use App\Http\Controllers\CadastroController;
+use App\Http\Controllers\AtendimentoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,10 @@ Route::get('/site/{id}', [SiteController::class, 'show'])->name('site.show');
 Route::get('/cadastro', [CadastroController::class, 'index'])->middleware(['auth'])->name('cadastro.index');
 Route::post('/cadastro/store', [CadastroController::class, 'store'])->middleware(['auth'])->name('cadastro.store');
 
+Route::get('/atendimento', [AtendimentoController::class, 'index'])->middleware(['auth'])->name('atendimento.index');
+
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    return view('site.index');
 })->middleware(['auth'])->name('dashboard');
 
 require __DIR__.'/auth.php';

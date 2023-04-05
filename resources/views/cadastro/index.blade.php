@@ -68,6 +68,14 @@
         }
     };
 
+    function mostraCampo(obj) {
+        var select = document.getElementById('inddoencacronica');
+        var txt = document.getElementById("descdoenca");
+        txt.style.visibility = (select.value == '1')
+            ? "visible"
+            : "hidden";
+      }
+
     </script>
 
 @section('content')
@@ -90,8 +98,8 @@
                     <input type="" id="telefone" name="telefone"
                         value="" required>
                 </label>  --}}
-                <label for="phone">Telefone:</label>
-                <input type="tel" id="telefone" name="phone" required>
+                <label for="telefone">Telefone:</label>
+                <input type="tel" id="telefone" name="telefone" required>
 
 
                 <label class="label">
@@ -101,13 +109,12 @@
 
 
                 <label class="label">
-                    <span class="inddoencacronica">Doença Cronica:</span>
-                    <input type="checkbox" id="inddoencacronica" value="1">
-                </label>
-
-                <label class="label">
-                    <span class="descdoenca">Descrição:</span>
-                    <input type="text" id="descdoenca" size="80" value="">
+                    <span class="inddoencacronica" >Doença Cronica:</span>
+                    <select name="inddoencacronica" id="inddoencacronica" onchange="mostraCampo(this);">
+                        <option value="0" selected>Não</option>
+                        <option value="1">Sim</option>
+                    </select>
+                    <input type="text" name="descdoenca" size="80" id="descdoenca" style="visibility: hidden;">
                 </label><br>
 
                     <label>Cep:
